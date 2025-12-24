@@ -19,7 +19,7 @@ class History extends StatelessWidget {
         ),
         centerTitle: true,
         title: const Text(
-          'Bike Riding',
+          'History',
           style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
         ),
       ),

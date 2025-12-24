@@ -19,7 +19,7 @@ class Carriding extends StatelessWidget {
         ),
         centerTitle: true,
         title: const Text(
-          'Bike Riding',
+          'Car Riding',
           style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
         ),
       ),

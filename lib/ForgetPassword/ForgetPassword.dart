@@ -1,32 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:riderbooking/ForgetPassword/ForgetPassword.dart';
-import 'package:riderbooking/Home/Home.dart';
-import 'package:riderbooking/Registered/Registered.dart';
+import 'package:riderbooking/Login/Login.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class Forgetpassword extends StatefulWidget {
+  const Forgetpassword({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Forgetpassword> createState() => _ForgetpasswordState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _usernameController = TextEditingController();
+class _ForgetpasswordState extends State<Forgetpassword> {
+  final TextEditingController _rePasswordController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _obscure = true;
   final _formKey = GlobalKey<FormState>();
 
   void _submit() {
     if(!_formKey.currentState!.validate()) return;
-    final user = _usernameController.text.trim();
     final pass = _passwordController.text;
     
-    Navigator.push(context,MaterialPageRoute(builder: (_) => const HomeScreen()));
+    Navigator.push(context,MaterialPageRoute(builder: (_) => const LoginPage()));
   }
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _rePasswordController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -98,19 +95,8 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                //for username
-                const SizedBox(height: 40),
-                _field(
-                  controller: _usernameController,
-                  hint: 'Enter Username',
-                  validator: (v) {
-                    if (v == null || v.trim().isEmpty) return 'Please enter username';
-                    return null;
-                  },
-                ),
-                
                 //for password
-                const SizedBox(height: 16),
+                const SizedBox(height: 40),
                 _field(
                   controller: _passwordController,
                   hint: 'Enter Password',
@@ -126,19 +112,25 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 
-                const SizedBox(height: 2),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(context,MaterialPageRoute(builder: (_) => const Forgetpassword()));
-                    },
-                    style: TextButton.styleFrom(padding: EdgeInsets.zero, minimumSize: const Size(50, 5)),
-                    child: const Text('Forget Password', style: TextStyle(color: Colors.grey)),
+                //for repassword
+                const SizedBox(height: 16),
+                _field(
+                  controller: _rePasswordController,
+                  hint: 'ReEnter Password',
+                  obscure: _obscure,
+                  suffix: IconButton(
+                    icon: Icon(_obscure ? Icons.visibility_off : Icons.visibility, color: Colors.grey),
+                    onPressed: () => setState(() => _obscure = !_obscure),
                   ),
+                  validator: (v) {
+                    if (v == null || v.isEmpty) return 'Please enter password';
+                    if (v.length < 6) return 'Password must be at least 6 characters';
+                    if(v.trim() != _passwordController.text.trim()) return 'Passwords do not match';
+                    return null;
+                  },
                 ),
                 
-                const SizedBox(height: 10),
+                const SizedBox(height: 30),
                 GestureDetector(
                   onTap: _submit,
                   child: Container(
@@ -150,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     child: const Center(
                       child: Text(
-                        'Login',
+                        'Change Password',
                         style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -161,15 +153,6 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                
-                const SizedBox(height: 12),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (_) => const RegisteredPage()));
-                  },
-                  child: const Text('Create Account', style: TextStyle(color: Colors.grey)),
-                ),
-                const SizedBox(height: 40),
               ],
               ),
             ),

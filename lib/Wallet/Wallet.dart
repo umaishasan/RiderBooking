@@ -19,7 +19,7 @@ class Wallet extends StatelessWidget {
         ),
         centerTitle: true,
         title: const Text(
-          'Bike Riding',
+          'Wallet',
           style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
         ),
       ),

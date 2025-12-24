@@ -27,7 +27,7 @@ class _RegisteredPageState extends State<RegisteredPage> {
     final gender = _gender == 0 ? 'Male' : 'Female';
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Signed up $username ($gender)')),
+      SnackBar(content: Text('Signed up successfully')),
     );
     // After signup we can navigate back to login or proceed further
     Navigator.of(context).pop();
