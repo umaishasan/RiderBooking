@@ -15,7 +15,7 @@ class Wallet extends StatelessWidget {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black87),
-          onPressed: () {},
+          onPressed: () {Navigator.of(context).pop();},
         ),
         centerTitle: true,
         title: const Text(

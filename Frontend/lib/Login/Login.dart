@@ -47,6 +47,8 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
+              height: 52,
+              alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
                 color: const Color(0xFFF2F2F2),
                 borderRadius: BorderRadius.circular(30),
@@ -56,14 +58,16 @@ class _LoginPageState extends State<LoginPage> {
                 controller: controller,
                 obscureText: obscure,
                 onChanged: (value) => field.didChange(value),
+                textAlignVertical: TextAlignVertical.center,
                 style: const TextStyle(fontSize: 16),
                 decoration: InputDecoration(
                   hintText: hint,
                   hintStyle: const TextStyle(color: Colors.grey, fontStyle: FontStyle.italic),
                   border: InputBorder.none,
                   suffixIcon: suffix,
+                  suffixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
                   isDense: true,
-                  contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                  contentPadding: const EdgeInsets.symmetric(vertical: 0),
                 ),
               ),
             ),
@@ -118,6 +122,8 @@ class _LoginPageState extends State<LoginPage> {
                   suffix: IconButton(
                     icon: Icon(_obscure ? Icons.visibility_off : Icons.visibility, color: Colors.grey),
                     onPressed: () => setState(() => _obscure = !_obscure),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
                   ),
                   validator: (v) {
                     if (v == null || v.isEmpty) return 'Please enter password';

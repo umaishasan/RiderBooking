@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:riderbooking/BottomBar/BottomBar.dart';
 
-class Bikeriding extends StatelessWidget {
-  const Bikeriding({super.key});
+class Notifications extends StatelessWidget {
+  const Notifications({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class Bikeriding extends StatelessWidget {
         ),
         centerTitle: true,
         title: const Text(
-          'Bike Riding',
+          'Notifications',
           style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:riderbooking/BottomBar/BottomBar.dart';
+import 'package:riderbooking/Notifications/Notifications.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -13,12 +14,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: teal,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black87),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
+        automaticallyImplyLeading: false,
         centerTitle: true,
         title: const Text(
           'Home',
@@ -27,7 +23,10 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications, color: Colors.black87),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Notifications()),
+              );
+            },
           ),
         ],
       ),
